@@ -22,6 +22,7 @@ public class HideModule {
 
 
     public void hide(XC_LoadPackage.LoadPackageParam loadPackageParam) {
+
         findAndHookMethod("android.app.ApplicationPackageManager", loadPackageParam.classLoader, "getInstalledApplications", int.class, new XC_MethodHook() {
             @Override
             protected void afterHookedMethod(MethodHookParam param) throws Throwable {
@@ -129,6 +130,6 @@ public class HideModule {
     }
 
     private boolean isTarget(String name) {
-        return name.contains("veryyoung") || name.contains("xposed");
+        return name.contains("com.tony.didi.android.mmspy") || name.contains("xposed");
     }
 }

@@ -5,22 +5,22 @@ android {
     signingConfigs {
         debug {
             storeFile file("keystore/debug.keystore")
-            storePassword "password"
-            keyAlias "veryyoung"
-            keyPassword "password"
+            storePassword "123456"
+            keyAlias "xuhao"
+            keyPassword "123456"
         }
         release {
             storeFile file("keystore/release.keystore")
-            storePassword "password"
-            keyAlias "veryyoung"
-            keyPassword "password"
+            storePassword "123456"
+            keyAlias "xuhao"
+            keyPassword "123456"
         }
     }
 
     compileSdkVersion 23
     buildToolsVersion "23.0.2"
     defaultConfig {
-        applicationId "me.veryyoung.wechat.luckymoney"
+        applicationId "com.tony.didi.android.mmspy"
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 39
