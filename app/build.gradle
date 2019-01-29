@@ -4,16 +4,16 @@ android {
 
     signingConfigs {
         debug {
-            storeFile file("keystore/debug.keystore")
-            storePassword "password"
-            keyAlias "veryyoung"
-            keyPassword "password"
+            storeFile file("../release.keystore")
+            storePassword "123456"
+            keyAlias "key0"
+            keyPassword "123456"
         }
         release {
-            storeFile file("keystore/release.keystore")
-            storePassword "password"
-            keyAlias "veryyoung"
-            keyPassword "password"
+            storeFile file("../release.keystore")
+            storePassword "123456"
+            keyAlias "key0"
+            keyPassword "123456"
         }
     }
 

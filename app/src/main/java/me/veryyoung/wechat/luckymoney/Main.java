@@ -18,6 +18,7 @@ import org.xmlpull.v1.XmlPullParserException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
 
 import de.robv.android.xposed.IXposedHookLoadPackage;
 import de.robv.android.xposed.XC_MethodHook;
@@ -58,7 +59,6 @@ public class Main implements IXposedHookLoadPackage {
                 String versionName = context.getPackageManager().getPackageInfo(lpparam.packageName, 0).versionName;
                 log("Found wechat version:" + versionName);
                 wechatVersion = versionName;
-                new DonateHook().hook(lpparam);
                 VersionParam.init(versionName);
             }
             findAndHookMethod("com.tencent.wcdb.database.SQLiteDatabase", lpparam.classLoader, "insert", String.class, String.class, ContentValues.class, new XC_MethodHook() {
@@ -105,7 +105,7 @@ public class Main implements IXposedHookLoadPackage {
                     }
             );
 
-            findAndHookMethod(luckyMoneyReceiveUI, lpparam.classLoader, VersionParam.receiveUIFunctionName, int.class, int.class, String.class, VersionParam.receiveUIParamName, new XC_MethodHook() {
+            findAndHookMethod(luckyMoneyReceiveUI, lpparam.classLoader, VersionParam.receiveUIFunctionName, int.class, int.class, String.class, findClass(VersionParam.receiveUIParamName,lpparam.classLoader), new XC_MethodHook() {
                 @Override
                 protected void afterHookedMethod(MethodHookParam param) throws Throwable {
                     if (PreferencesUtils.quickOpen()) {
