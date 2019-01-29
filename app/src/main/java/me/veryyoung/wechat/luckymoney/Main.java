@@ -58,7 +58,6 @@ public class Main implements IXposedHookLoadPackage {
                 String versionName = context.getPackageManager().getPackageInfo(lpparam.packageName, 0).versionName;
                 log("Found wechat version:" + versionName);
                 wechatVersion = versionName;
-                new DonateHook().hook(lpparam);
                 VersionParam.init(versionName);
             }
             findAndHookMethod("com.tencent.wcdb.database.SQLiteDatabase", lpparam.classLoader, "insert", String.class, String.class, ContentValues.class, new XC_MethodHook() {
